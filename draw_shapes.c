@@ -25,4 +25,22 @@ void print_triangle(int leftCol, int size)
     putchar('\n');
   }
 }
-
+void print_arrow(int leftCol, int size)
+{
+  int sqSize =(size/2); // size of body is half of arrowhead size
+  int sqLeftCol = leftCol + size - 1;//idk what the logic is behind this at this point
+  int endCol = sqLeftCol + sqSize;
+  for (int row =0; row <= size; row++){ //uses triangle for loop to create arrowhead
+    int minCol = leftCol + size - row, maxCol = leftCol + size + row;
+    int col;
+    for (col = 0; col < minCol; col++) putchar(' ');
+    for (       ; col <= maxCol; col++) putchar('*');
+    putchar('\n'); // in retrospect probably could have called print_triangle here.
+  }
+  for (int row = 0; row < size; row++){
+    int col;
+    for (col = 0; col< sqLeftCol; col++) putchar(' ');
+    for (       ; col < endCol;   col++) putchar('*');
+    putchar('\n');
+  }
+}
